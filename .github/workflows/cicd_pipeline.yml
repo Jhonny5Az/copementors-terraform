@@ -30,6 +30,7 @@ jobs:
           key: ${{ runner.os }}-terraform-${{ hashFiles('**/*.tf') }}
           restore-keys: |
             ${{ runner.os }}-terraform-
+
       - name: Initialize Terraform
         run: terraform init -upgrade
       - name: List Current Directory and Files
