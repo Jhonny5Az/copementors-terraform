@@ -1,7 +1,7 @@
 on:
-  push:
-    branches:
-      - class/02-terraform-pipeline
+  # push:
+  #   branches:
+  #     - class/02-terraform-pipeline
   pull_request:
     branches:
       - class/02-terraform-pipeline
