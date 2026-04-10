@@ -46,7 +46,7 @@ resource "aws_s3_bucket_public_access_block" "public_access" {
 module "my-buckets3" {
   source = "./modules/bucket-s3"
   //for_each = var.loop-bucket
-  bucket_name = "mynewbucket-20260326"
+  bucket_name = "mynewbucket-202603826"
   //bucket_name = each.value
 
   tags = {
