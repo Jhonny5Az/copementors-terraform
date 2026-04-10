@@ -1,10 +1,10 @@
 on:
-  # push:
-  #   branches:
-  #     - class/02-terraform-pipeline
-  pull_request:
+  push:
     branches:
       - class/02-terraform-pipeline
+  # pull_request:
+  #   branches:
+  #     - class/02-terraform-pipeline
   workflow_dispatch:
 jobs:
   terraform-init-plan:
