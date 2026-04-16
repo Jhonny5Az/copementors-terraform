@@ -5,6 +5,7 @@ resource "aws_s3_bucket" "s3_bucket" {
 }
 
 resource "aws_s3_bucket_website_configuration" "s3_bucket" {
+  count = var.enabled_static_website ? 1 : 0
   bucket = aws_s3_bucket.s3_bucket.id
 
   index_document {
@@ -15,9 +16,10 @@ resource "aws_s3_bucket_website_configuration" "s3_bucket" {
     key = "error.html"
   }
 }
-/* 
+ 
 # Ensure Public Access Block settings are in place (these are often defaults, but explicit is better)
 resource "aws_s3_bucket_public_access_block" "s3_bucket" {
+  count = var.enabled_public_access ? 1 : 0
   bucket = aws_s3_bucket.s3_bucket.id
   block_public_acls = false
   block_public_policy = false # Set to false to allow public policies if needed (e.g., for a static website)
@@ -25,7 +27,18 @@ resource "aws_s3_bucket_public_access_block" "s3_bucket" {
   restrict_public_buckets = false # Set to false if you want the public policy to work
 }
 
+resource "aws_s3_bucket_cors_configuration" "s3_bucket_cors" {
+  count = var.enabled_cors_config ? 1 : 0
+  bucket = aws_s3_bucket.s3_bucket.id
+    cors_rule {
+    allowed_headers = ["*"]
+    allowed_methods = ["PUT", "GET"]
+    allowed_origins = ["*"]
+    expose_headers  = [""]
+  }
+}
 
+/*
 resource "aws_s3_bucket_policy" "s3_bucket" {
   bucket = aws_s3_bucket.s3_bucket.id
 

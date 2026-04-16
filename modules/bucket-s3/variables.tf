@@ -10,3 +10,18 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "enabled_static_website" {
+    type        = bool
+  default     = false
+}
+
+variable "enabled_public_access" {
+    type        = bool
+  default     = false
+}
+
+variable "enabled_cors_config" {
+    type        = bool
+  default     = false
+}

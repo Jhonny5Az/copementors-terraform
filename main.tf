@@ -53,4 +53,17 @@ module "my-buckets3" {
     Terraform   = "true"
     Environment = "dev"
   }
+  enabled_static_website = true
+}
+
+module "arch-03S3" {
+  source      = "./modules/bucket-s3"
+  bucket_name = "arch-03s3-01"
+  tags = {
+    Terraform   = "true"
+    Environment = "03S3"
+  }
+  enabled_public_access  = true
+  enabled_cors_config    = true
+  enabled_static_website = false
 }
