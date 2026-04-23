@@ -67,3 +67,8 @@ module "arch-03S3" {
   enabled_cors_config    = true
   enabled_static_website = false
 }
+
+module "lambda-module" {
+  source = "./modules/lambda"
+
+}
